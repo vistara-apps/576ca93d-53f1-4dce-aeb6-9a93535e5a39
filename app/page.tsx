@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useMiniKit } from '@coinbase/minikit';
+// import { useMiniKit } from '@coinbase/onchainkit/minikit'; // Temporarily disabled
 import { AppShell } from '../components/AppShell';
 import { Dashboard } from '../components/Dashboard';
 import { TagSelector } from '../components/TagSelector';
@@ -25,7 +25,7 @@ export interface UserSession {
 }
 
 export default function Home() {
-  const { context } = useMiniKit();
+  // const { context } = useMiniKit(); // Temporarily disabled
   const [appState, setAppState] = useState<AppState>('dashboard');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [currentSession, setCurrentSession] = useState<UserSession | null>(null);
@@ -125,9 +125,9 @@ export default function Home() {
   return (
     <AppShell>
       {appState === 'dashboard' && (
-        <Dashboard 
+        <Dashboard
           onStartSupport={handleStartSupport}
-          userContext={context?.user}
+          userContext={undefined} // Temporarily disabled
         />
       )}
       

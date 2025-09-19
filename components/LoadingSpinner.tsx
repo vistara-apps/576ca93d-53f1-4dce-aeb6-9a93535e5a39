@@ -11,13 +11,13 @@ export function LoadingSpinner() {
       </div>
       
       <div className="text-center space-y-2">
-        <h3 className="text-lg font-semibold text-textPrimary">Finding your support circle...</h3>
-        <p className="text-sm text-textSecondary max-w-xs">
+        <h3 className="text-lg font-semibold text-primary">Finding your support circle...</h3>
+        <p className="text-sm text-secondary max-w-xs">
           We're matching you with peers who understand your journey. This may take a moment.
         </p>
       </div>
       
-      <div className="flex items-center space-x-2 text-xs text-textSecondary">
+      <div className="flex items-center space-x-2 text-xs text-secondary">
         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
         <span>Professional oversight active</span>
       </div>
