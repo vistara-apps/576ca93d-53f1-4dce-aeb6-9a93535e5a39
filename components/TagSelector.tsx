@@ -47,13 +47,13 @@ export function TagSelector({ onTagsSelected, onBack }: TagSelectorProps) {
           onClick={onBack}
           className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
         >
-          <svg className="w-5 h-5 text-textSecondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <div>
-          <h2 className="text-xl font-bold text-textPrimary">What brings you here?</h2>
-          <p className="text-sm text-textSecondary">Select topics you'd like support with</p>
+          <h2 className="text-xl font-bold text-primary">What brings you here?</h2>
+          <p className="text-sm text-secondary">Select topics you'd like support with</p>
         </div>
       </div>
 
@@ -72,7 +72,7 @@ export function TagSelector({ onTagsSelected, onBack }: TagSelectorProps) {
 
       {/* Tag Grid */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-textPrimary">Select your topics:</h3>
+        <h3 className="text-lg font-semibold text-primary">Select your topics:</h3>
         <div className="grid grid-cols-2 gap-3">
           {AVAILABLE_TAGS.map((tag) => (
             <button
@@ -89,7 +89,7 @@ export function TagSelector({ onTagsSelected, onBack }: TagSelectorProps) {
               <div className="flex items-center space-x-3">
                 <span className="text-2xl">{tag.emoji}</span>
                 <div>
-                  <div className={`font-medium ${selectedTags.includes(tag.id) ? 'text-primary' : 'text-textPrimary'}`}>
+                  <div className={`font-medium ${selectedTags.includes(tag.id) ? 'text-primary' : 'text-primary'}`}>
                     {tag.label}
                   </div>
                 </div>
@@ -132,7 +132,7 @@ export function TagSelector({ onTagsSelected, onBack }: TagSelectorProps) {
       <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
         <div className="flex items-center space-x-2">
           <span className="text-sm">🔒</span>
-          <p className="text-xs text-textSecondary">
+          <p className="text-xs text-secondary">
             Your selections remain completely anonymous and are only used for matching.
           </p>
         </div>

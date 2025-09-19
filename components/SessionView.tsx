@@ -39,15 +39,15 @@ export function SessionView({ session, onSendMessage, onEndSession }: SessionVie
       <div className="bg-surface border-b border-border px-4 py-3">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="font-semibold text-textPrimary">Support Circle</h3>
-            <p className="text-xs text-textSecondary">
+            <h3 className="font-semibold text-primary">Support Circle</h3>
+            <p className="text-xs text-secondary">
               {session.tags.join(', ')} • {session.startTime && formatTime(session.startTime)}
             </p>
           </div>
           <div className="flex items-center space-x-2">
             <div className="flex items-center space-x-1">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-xs text-textSecondary">Oversight Active</span>
+              <span className="text-xs text-secondary">Oversight Active</span>
             </div>
             <button
               onClick={onEndSession}
@@ -91,12 +91,12 @@ export function SessionView({ session, onSendMessage, onEndSession }: SessionVie
 
             {message.type === 'peer' && (
               <div className="flex justify-start">
-                <div className="bg-gray-100 text-textPrimary rounded-lg px-4 py-3 max-w-xs">
+                <div className="bg-gray-100 text-primary rounded-lg px-4 py-3 max-w-xs">
                   <div className="flex items-center space-x-2 mb-1">
-                    <span className="text-xs font-medium text-textSecondary">Anonymous Peer</span>
+                    <span className="text-xs font-medium text-secondary">Anonymous Peer</span>
                   </div>
                   <p className="text-sm leading-relaxed">{message.content}</p>
-                  <p className="text-xs text-textSecondary mt-1">{formatTime(message.timestamp)}</p>
+                  <p className="text-xs text-secondary mt-1">{formatTime(message.timestamp)}</p>
                 </div>
               </div>
             )}
@@ -147,7 +147,7 @@ export function SessionView({ session, onSendMessage, onEndSession }: SessionVie
           </button>
         </form>
         
-        <div className="mt-2 flex items-center justify-between text-xs text-textSecondary">
+        <div className="mt-2 flex items-center justify-between text-xs text-secondary">
           <span>Anonymous • Encrypted • Moderated</span>
           <span>{session.messages.length} messages</span>
         </div>

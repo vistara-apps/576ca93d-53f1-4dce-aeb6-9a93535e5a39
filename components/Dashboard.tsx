@@ -10,8 +10,8 @@ export function Dashboard({ onStartSupport, userContext }: DashboardProps) {
     <div className="p-4 space-y-6">
       {/* Dashboard Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold text-textPrimary">Dashboard 🧡</h2>
-        <span className="text-sm text-textSecondary">This Week</span>
+        <h2 className="text-xl font-bold text-primary">Dashboard 🧡</h2>
+        <span className="text-sm text-secondary">This Week</span>
       </div>
 
       {/* Anonymous Peer Support Groups Card */}
@@ -72,8 +72,8 @@ export function Dashboard({ onStartSupport, userContext }: DashboardProps) {
         <div className="flex items-center space-x-3">
           <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
           <div>
-            <p className="text-sm font-medium text-textPrimary">Professional Oversight Active</p>
-            <p className="text-xs text-textSecondary">Licensed counselors monitor all sessions for safety</p>
+            <p className="text-sm font-medium text-primary">Professional Oversight Active</p>
+            <p className="text-xs text-secondary">Licensed counselors monitor all sessions for safety</p>
           </div>
         </div>
       </div>
@@ -82,11 +82,11 @@ export function Dashboard({ onStartSupport, userContext }: DashboardProps) {
       <div className="grid grid-cols-2 gap-4">
         <div className="bg-surface rounded-lg p-4 border border-border text-center">
           <div className="text-2xl font-bold text-primary">24/7</div>
-          <div className="text-xs text-textSecondary">Support Available</div>
+          <div className="text-xs text-secondary">Support Available</div>
         </div>
         <div className="bg-surface rounded-lg p-4 border border-border text-center">
           <div className="text-2xl font-bold text-accent">100%</div>
-          <div className="text-xs text-textSecondary">Anonymous</div>
+          <div className="text-xs text-secondary">Anonymous</div>
         </div>
       </div>
 
@@ -95,8 +95,8 @@ export function Dashboard({ onStartSupport, userContext }: DashboardProps) {
         <div className="flex items-start space-x-3">
           <span className="text-lg">🔒</span>
           <div>
-            <h4 className="text-sm font-medium text-textPrimary mb-1">Your Privacy Matters</h4>
-            <p className="text-xs text-textSecondary leading-relaxed">
+            <h4 className="text-sm font-medium text-primary mb-1">Your Privacy Matters</h4>
+            <p className="text-xs text-secondary leading-relaxed">
               All conversations are encrypted and anonymous. Your identity is never shared with other participants.
             </p>
           </div>

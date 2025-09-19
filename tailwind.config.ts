@@ -65,6 +65,13 @@ const config: Config = {
         border: "var(--border)",
         input: "var(--input)",
         ring: "var(--ring)",
+        // CareCircle design system colors
+        bg: "var(--bg)",
+        // accent: "var(--accent)", // Removed duplicate
+        // primary: "var(--primary)", // Removed duplicate
+        surface: "var(--surface)",
+        "text-primary": "var(--text-primary)",
+        "text-secondary": "var(--text-secondary)",
         chart: {
           1: "var(--chart-1)",
           2: "var(--chart-2)",
