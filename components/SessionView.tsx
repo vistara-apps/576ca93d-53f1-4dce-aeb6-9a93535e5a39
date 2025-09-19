@@ -36,45 +36,50 @@ export function SessionView({ session, onSendMessage, onEndSession }: SessionVie
   return (
     <div className="flex flex-col h-screen">
       {/* Session Header */}
-      <div className="bg-surface border-b border-border px-4 py-3">
+      <div className="bg-white border-b border-gray-100 px-6 py-4 shadow-sm">
         <div className="flex items-center justify-between">
-          <div>
-            <h3 className="font-semibold text-textPrimary">Support Circle</h3>
-            <p className="text-xs text-textSecondary">
-              {session.tags.join(', ')} • {session.startTime && formatTime(session.startTime)}
-            </p>
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center">
+              <span className="text-white text-lg">🤝</span>
+            </div>
+            <div>
+              <h2 className="font-bold text-gray-900">Support Circle</h2>
+              <p className="text-sm text-purple-600 font-medium">
+                {session.tags.join(', ')} • {session.startTime && formatTime(session.startTime)}
+              </p>
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2 bg-green-50 px-3 py-1 rounded-full">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-xs text-textSecondary">Oversight Active</span>
+              <span className="text-xs text-green-700 font-medium">Protected</span>
             </div>
             <button
               onClick={onEndSession}
-              className="text-xs text-red-600 hover:text-red-700 font-medium"
+              className="btn-ghost text-red-600 hover:text-red-700 text-sm px-3 py-1"
             >
-              End Session
+              End
             </button>
           </div>
         </div>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto px-6 py-4 space-y-6 bg-gray-50">
         {session.messages.map((message) => (
           <div key={message.id} className="animate-fade-in">
             {message.type === 'prompt' && (
-              <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm">🤖</span>
+              <div className="card bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 max-w-lg mx-auto">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <span className="text-white text-lg">💭</span>
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center space-x-2 mb-1">
-                      <span className="text-sm font-medium text-blue-900">Guided Prompt</span>
-                      <span className="text-xs text-blue-600">{formatTime(message.timestamp)}</span>
+                    <div className="flex items-center space-x-2 mb-2">
+                      <span className="font-semibold text-blue-900">Guided Prompt</span>
+                      <span className="text-xs text-blue-600 bg-blue-100 px-2 py-1 rounded-full">{formatTime(message.timestamp)}</span>
                     </div>
-                    <p className="text-sm text-blue-800 leading-relaxed">{message.content}</p>
+                    <p className="text-blue-800 leading-relaxed">{message.content}</p>
                   </div>
                 </div>
               </div>
@@ -82,37 +87,40 @@ export function SessionView({ session, onSendMessage, onEndSession }: SessionVie
 
             {message.type === 'user' && (
               <div className="flex justify-end">
-                <div className="bg-primary text-white rounded-lg px-4 py-3 max-w-xs">
-                  <p className="text-sm leading-relaxed">{message.content}</p>
-                  <p className="text-xs opacity-75 mt-1">{formatTime(message.timestamp)}</p>
+                <div className="bg-gradient-to-br from-purple-600 to-purple-700 text-white rounded-2xl px-5 py-3 max-w-sm shadow-lg">
+                  <p className="leading-relaxed">{message.content}</p>
+                  <p className="text-xs opacity-75 mt-2 text-right">{formatTime(message.timestamp)}</p>
                 </div>
               </div>
             )}
 
             {message.type === 'peer' && (
               <div className="flex justify-start">
-                <div className="bg-gray-100 text-textPrimary rounded-lg px-4 py-3 max-w-xs">
-                  <div className="flex items-center space-x-2 mb-1">
-                    <span className="text-xs font-medium text-textSecondary">Anonymous Peer</span>
+                <div className="bg-white text-gray-900 rounded-2xl px-5 py-3 max-w-sm shadow-md border border-gray-200">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-6 h-6 bg-gradient-to-br from-gray-400 to-gray-500 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xs">👤</span>
+                    </div>
+                    <span className="text-xs font-medium text-gray-500">Anonymous Peer</span>
                   </div>
-                  <p className="text-sm leading-relaxed">{message.content}</p>
-                  <p className="text-xs text-textSecondary mt-1">{formatTime(message.timestamp)}</p>
+                  <p className="leading-relaxed">{message.content}</p>
+                  <p className="text-xs text-gray-400 mt-2">{formatTime(message.timestamp)}</p>
                 </div>
               </div>
             )}
 
             {message.type === 'moderator' && (
-              <div className="bg-yellow-50 rounded-lg p-4 border border-yellow-200">
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm">👨‍⚕️</span>
+              <div className="card bg-gradient-to-br from-amber-50 to-yellow-50 border border-amber-200 max-w-lg mx-auto">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <span className="text-white text-lg">👨‍⚕️</span>
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center space-x-2 mb-1">
-                      <span className="text-sm font-medium text-yellow-900">Professional Moderator</span>
-                      <span className="text-xs text-yellow-600">{formatTime(message.timestamp)}</span>
+                    <div className="flex items-center space-x-2 mb-2">
+                      <span className="font-semibold text-amber-900">Professional Moderator</span>
+                      <span className="text-xs text-amber-600 bg-amber-100 px-2 py-1 rounded-full">{formatTime(message.timestamp)}</span>
                     </div>
-                    <p className="text-sm text-yellow-800 leading-relaxed">{message.content}</p>
+                    <p className="text-amber-800 leading-relaxed">{message.content}</p>
                   </div>
                 </div>
               </div>
@@ -123,22 +131,22 @@ export function SessionView({ session, onSendMessage, onEndSession }: SessionVie
       </div>
 
       {/* Message Input */}
-      <div className="bg-surface border-t border-border p-4">
-        <form onSubmit={handleSendMessage} className="flex space-x-3">
+      <div className="bg-white border-t border-gray-100 px-6 py-4 shadow-lg">
+        <form onSubmit={handleSendMessage} className="flex space-x-3 mb-3">
           <input
             type="text"
             value={messageInput}
             onChange={(e) => setMessageInput(e.target.value)}
-            placeholder="Share your thoughts..."
-            className="flex-1 px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            placeholder="Share your thoughts safely..."
+            className="input-primary flex-1 text-lg"
           />
           <button
             type="submit"
             disabled={!messageInput.trim()}
             className={`
-              px-6 py-3 rounded-lg font-medium transition-all duration-200
+              px-8 py-3 rounded-2xl font-semibold transition-all duration-200 shadow-lg
               ${messageInput.trim()
-                ? 'bg-primary text-white hover:opacity-90 active:scale-95'
+                ? 'btn-primary transform hover:scale-105'
                 : 'bg-gray-200 text-gray-400 cursor-not-allowed'
               }
             `}
@@ -147,9 +155,22 @@ export function SessionView({ session, onSendMessage, onEndSession }: SessionVie
           </button>
         </form>
         
-        <div className="mt-2 flex items-center justify-between text-xs text-textSecondary">
-          <span>Anonymous • Encrypted • Moderated</span>
-          <span>{session.messages.length} messages</span>
+        <div className="flex items-center justify-between text-sm">
+          <div className="flex items-center space-x-4 text-gray-500">
+            <span className="flex items-center space-x-1">
+              <span>🔒</span>
+              <span>Anonymous</span>
+            </span>
+            <span className="flex items-center space-x-1">
+              <span>🛡️</span>
+              <span>Encrypted</span>
+            </span>
+            <span className="flex items-center space-x-1">
+              <span>👨‍⚕️</span>
+              <span>Moderated</span>
+            </span>
+          </div>
+          <span className="text-purple-600 font-medium">{session.messages.length} messages</span>
         </div>
       </div>
     </div>

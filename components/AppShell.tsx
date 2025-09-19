@@ -8,48 +8,24 @@ interface AppShellProps {
 
 export function AppShell({ children }: AppShellProps) {
   return (
-    <div className="min-h-screen bg-bg">
-      <div className="max-w-md mx-auto bg-surface min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="max-w-md mx-auto bg-white min-h-screen shadow-2xl">
         {/* Header */}
-        <header className="bg-surface border-b border-border px-4 py-3">
+        <header className="bg-white border-b border-gray-100 px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-red-400 to-pink-500 rounded-full flex items-center justify-center">
-                <span className="text-white text-sm">❤️</span>
+              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg">
+                <span className="text-white text-lg">❤️</span>
               </div>
               <div>
-                <h1 className="text-lg font-bold text-textPrimary">CareCircle</h1>
-                <p className="text-xs text-textSecondary">Care Circle</p>
+                <h1 className="text-xl font-bold text-gray-900">CareCircle</h1>
+                <p className="text-xs text-purple-600 font-medium">Anonymous Support</p>
               </div>
             </div>
-            <button className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200">
-              <svg className="w-5 h-5 text-textSecondary" fill="currentColor" viewBox="0 0 20 20">
+            <button className="btn-ghost p-2">
+              <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
               </svg>
-            </button>
-          </div>
-          
-          <div className="mt-3">
-            <p className="text-sm text-textSecondary">Anonymous Peer Support Groups</p>
-          </div>
-          
-          {/* Navigation Tags */}
-          <div className="flex space-x-4 mt-4">
-            <button className="flex items-center space-x-1 text-sm text-textPrimary">
-              <span>🏠</span>
-              <span>Online</span>
-            </button>
-            <button className="flex items-center space-x-1 text-sm text-textSecondary">
-              <span>📱</span>
-              <span>Mental</span>
-            </button>
-            <button className="flex items-center space-x-1 text-sm text-textSecondary">
-              <span>💼</span>
-              <span>Counseling</span>
-            </button>
-            <button className="flex items-center space-x-1 text-sm text-textSecondary">
-              <span>🧠</span>
-              <span>Healing</span>
             </button>
           </div>
         </header>
@@ -60,32 +36,31 @@ export function AppShell({ children }: AppShellProps) {
         </main>
 
         {/* Bottom Navigation */}
-        <nav className="bg-surface border-t border-border px-4 py-2">
+        <nav className="bg-white border-t border-gray-100 px-6 py-3 shadow-lg">
           <div className="flex justify-around">
-            <button className="flex flex-col items-center py-2 text-textSecondary">
+            <button className="flex flex-col items-center py-2 px-3 rounded-xl text-purple-600 bg-purple-50 transition-all duration-200">
               <svg className="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
               </svg>
+              <span className="text-xs font-medium">Home</span>
             </button>
-            <button className="flex flex-col items-center py-2 text-primary">
+            <button className="flex flex-col items-center py-2 px-3 rounded-xl text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-all duration-200">
               <svg className="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
               </svg>
+              <span className="text-xs font-medium">Explore</span>
             </button>
-            <button className="flex flex-col items-center py-2 text-textSecondary">
+            <button className="flex flex-col items-center py-2 px-3 rounded-xl text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-all duration-200">
               <svg className="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4z" clipRule="evenodd" />
+                <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
               </svg>
+              <span className="text-xs font-medium">Chat</span>
             </button>
-            <button className="flex flex-col items-center py-2 text-textSecondary">
+            <button className="flex flex-col items-center py-2 px-3 rounded-xl text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-all duration-200">
               <svg className="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
               </svg>
-            </button>
-            <button className="flex flex-col items-center py-2 text-textSecondary">
-              <svg className="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 2L3 7v11a1 1 0 001 1h12a1 1 0 001-1V7l-7-5z" />
-              </svg>
+              <span className="text-xs font-medium">Profile</span>
             </button>
           </div>
         </nav>
