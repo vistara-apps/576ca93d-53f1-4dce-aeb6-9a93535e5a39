@@ -1,14 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import { useMiniKit } from '@coinbase/minikit';
+import { useState, useEffect } from 'react';
 import { AppShell } from '../components/AppShell';
 import { Dashboard } from '../components/Dashboard';
 import { TagSelector } from '../components/TagSelector';
 import { SessionView } from '../components/SessionView';
 import { LoadingSpinner } from '../components/LoadingSpinner';
+import { Onboarding } from '../components/Onboarding';
+import { ErrorBoundary } from '../components/ErrorBoundary';
+import { EmptyState } from '../components/EmptyState';
 
-export type AppState = 'dashboard' | 'tag-selection' | 'matching' | 'session' | 'payment';
+export type AppState = 'dashboard' | 'tag-selection' | 'matching' | 'session' | 'payment' | 'error';
 
 export interface UserSession {
   id: string;
@@ -25,11 +27,24 @@ export interface UserSession {
 }
 
 export default function Home() {
-  const { context } = useMiniKit();
   const [appState, setAppState] = useState<AppState>('dashboard');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [currentSession, setCurrentSession] = useState<UserSession | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+
+  // Check if user has seen onboarding
+  useEffect(() => {
+    const hasSeenOnboarding = localStorage.getItem('carecircle-onboarding-complete');
+    if (!hasSeenOnboarding) {
+      setShowOnboarding(true);
+    }
+  }, []);
+
+  const handleOnboardingComplete = () => {
+    localStorage.setItem('carecircle-onboarding-complete', 'true');
+    setShowOnboarding(false);
+  };
 
   const handleStartSupport = () => {
     setAppState('tag-selection');
@@ -40,8 +55,15 @@ export default function Home() {
     setIsLoading(true);
     setAppState('matching');
 
-    // Simulate matching process
+    // Simulate matching process with potential failure
     setTimeout(() => {
+      // Simulate 10% chance of matching failure for demo purposes
+      if (Math.random() < 0.1) {
+        setIsLoading(false);
+        setAppState('error');
+        return;
+      }
+
       const newSession: UserSession = {
         id: `session-${Date.now()}`,
         tags,
@@ -112,39 +134,54 @@ export default function Home() {
     }, 2000);
   };
 
+  // Show onboarding if first time user
+  if (showOnboarding) {
+    return <Onboarding onComplete={handleOnboardingComplete} />;
+  }
+
   if (isLoading) {
     return (
       <AppShell>
-        <div className="flex items-center justify-center min-h-screen">
-          <LoadingSpinner />
-        </div>
+        <LoadingSpinner />
       </AppShell>
     );
   }
 
   return (
-    <AppShell>
-      {appState === 'dashboard' && (
-        <Dashboard 
-          onStartSupport={handleStartSupport}
-          userContext={context?.user}
-        />
-      )}
-      
-      {appState === 'tag-selection' && (
-        <TagSelector 
-          onTagsSelected={handleTagsSelected}
-          onBack={() => setAppState('dashboard')}
-        />
-      )}
-      
-      {appState === 'session' && currentSession && (
-        <SessionView 
-          session={currentSession}
-          onSendMessage={handleSendMessage}
-          onEndSession={handleEndSession}
-        />
-      )}
-    </AppShell>
+    <ErrorBoundary>
+      <AppShell>
+        {appState === 'dashboard' && (
+          <Dashboard 
+            onStartSupport={handleStartSupport}
+          />
+        )}
+        
+        {appState === 'tag-selection' && (
+          <TagSelector 
+            onTagsSelected={handleTagsSelected}
+            onBack={() => setAppState('dashboard')}
+          />
+        )}
+        
+        {appState === 'error' && (
+          <EmptyState
+            icon="😔"
+            title="Unable to find a match"
+            description="We couldn't find peers available right now. This sometimes happens during low-traffic periods. Please try again in a few minutes."
+            actionLabel="Try Again"
+            onAction={() => setAppState('tag-selection')}
+            gradient="from-orange-500 to-red-500"
+          />
+        )}
+        
+        {appState === 'session' && currentSession && (
+          <SessionView 
+            session={currentSession}
+            onSendMessage={handleSendMessage}
+            onEndSession={handleEndSession}
+          />
+        )}
+      </AppShell>
+    </ErrorBoundary>
   );
 }
