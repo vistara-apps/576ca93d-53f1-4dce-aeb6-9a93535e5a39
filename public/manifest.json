@@ -1,0 +1,14 @@
+{
+  "name": "CareCircle",
+  "description": "CareCircle is a Base Mini App built with Zara.",
+  "image": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=OG",
+  "external_url": "https://576ca93d-53f1-4dce-aeb6-9a93535e5a39.vercel.app",
+  "properties": {
+    "app": {
+      "name": "CareCircle",
+      "description": "CareCircle is a Base Mini App built with Zara.",
+      "url": "https://576ca93d-53f1-4dce-aeb6-9a93535e5a39.vercel.app",
+      "icon": "https://0co.to/images/zara-2.png"
+    }
+  }
+}

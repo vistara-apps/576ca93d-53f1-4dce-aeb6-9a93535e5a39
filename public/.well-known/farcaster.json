@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "CareCircle",
+    "subtitle": "Built with Zara",
+    "description": "CareCircle is a Base Mini App built with Zara.",
+    "iconUrl": "https://0co.to/images/zara-2.png",
+    "homeUrl": "https://576ca93d53f14dceaeb69a93535e5a39-l7bz.vercel.app",
+    "splashImageUrl": "https://576ca93d53f14dceaeb69a93535e5a39-l7bz.vercel.app/splash.png",
+    "splashBackgroundColor": "#000000",
+    "heroImageUrl": "https://576ca93d53f14dceaeb69a93535e5a39-l7bz.vercel.app/image.png",
+    "tagline": "CareCircle",
+    "screenshotUrls": [
+      "https://576ca93d53f14dceaeb69a93535e5a39-l7bz.vercel.app/screenshot.png",
+      "https://576ca93d53f14dceaeb69a93535e5a39-l7bz.vercel.app/screenshot.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "base",
+      "miniapp",
+      "onchainkit"
+    ],
+    "webhookUrl": "https://576ca93d53f14dceaeb69a93535e5a39-l7bz.vercel.app/api/webhook"
+  }
+}
